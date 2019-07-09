@@ -4,7 +4,7 @@ import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.amqp.rabbit.support.CorrelationData;
+//import org.springframework.amqp.rabbit.support.CorrelationData;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -30,7 +30,7 @@ public class RabbitConfigs {
                         @Qualifier("directexchange") DirectExchange exchange){
         return BindingBuilder.bind(queue).to(exchange).with("helloKey");
     }
-*/
+
 
     @Bean("hello")
     public Queue helloQueue(){
@@ -76,14 +76,7 @@ public class RabbitConfigs {
         RabbitTemplate template = new RabbitTemplate(connectionFactory());
         template.setReturnCallback(new RabbitTemplate.ReturnCallback(){
 
-            /**
-             *
-             * @param message
-             * @param i
-             * @param s
-             * @param s1
-             * @param s2 routeKey
-             */
+
             @Override
             public void returnedMessage(Message message, int i, String s, String s1, String s2) {
                 System.out.println(message);
@@ -105,6 +98,6 @@ public class RabbitConfigs {
         template.setMandatory(true);
         return template;
     }
-
+*/
 
 }
